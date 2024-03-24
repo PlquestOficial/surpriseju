@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha surpresa</title>
+    <style>
+        body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+.box{
+    font-size: 20px;
+    color: white;
+    height: 250px;
+    width: 350px;
+    border-radius: 10px;
+    background: #191919;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    width: 150px;
+}
+button {
+    height: 40px;
+    width: 70px;
+    background: white;
+    border-radius: 5px;
+    color: blue;
+    font-weight: 600;
+}
+    </style>
+</head>
+<body style="background-color: #191919;">
+    <div class="box">
+        <p> Sei que errei todos esse tempo em não te ver, criei esse programa no intuito de tu não desistir de mim, promete?? Eu perco a aposta e lhe dou o direito de pedir o que quiser, ok?</p>
+        <div class="buttons-container">
+            <button>
+                <a href="index2.html">Prometo</a>
+            </button>
+            <button id="no">Não</button>
+        </div>
+    </div>
+</body>
+<script>
+    let button = document.getElementById('no');
+    let box = document.querySelector('.box');
+
+    button.addEventListener('mouseover', function () {
+        let boxRect = box.getBoundingClientRect();
+        let buttonRect = button.getBoundingClientRect();
+
+        let maxWidth = boxRect.width - buttonRect.width;
+        let maxHeight = boxRect.height - buttonRect.height;
+
+        let randomX = Math.random() * maxWidth;
+        let randomY = Math.random() * maxHeight;
+
+        // Limitando o movimento do botão dentro dos limites da caixa
+        randomX = Math.min(randomX, maxWidth);
+        randomY = Math.min(randomY, maxHeight);
+
+        button.style.position = "absolute";
+        button.style.top = randomY + "px";
+        button.style.left = randomX + "px";
+    });
+</script>
+</html>
